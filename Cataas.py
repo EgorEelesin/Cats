@@ -6,7 +6,9 @@ from io import BytesIO
 from PIL import ImageTk
 
 def open_new_window():
-    img = load_image(url)
+    tag = tag_entry.get()
+    url_tag = f'https://cataas.com/cat/{tag}' if tag else 'https://cataas.com/cat'
+    img = load_image(url_tag)
 
     if img:
         new_window = Toplevel()
@@ -38,6 +40,12 @@ def load_image(url):
 window = Tk()
 window.title('Cats')
 window.geometry('500x500')
+
+tag_entry = Entry(window)
+tag_entry.pack()
+
+load_button = Button(text='Загрузить по тегу', command=open_new_window)
+load_button.pack()
 
 # label = Label()
 # label.pack()
