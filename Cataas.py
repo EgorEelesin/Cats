@@ -30,9 +30,17 @@ window.geometry('500x500')
 label = Label()
 label.pack()
 
-update_button = Button(text='Update', command=set_image)
-update_button.pack()
+# update_button = Button(text='Update', command=set_image)
+# update_button.pack()
 
+menu_bar = Menu(window)
+window.config(menu=menu_bar)
+
+file_menu = Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label='File', menu=file_menu)
+file_menu.add_command(label='Загрузить фота', command= set_image)
+file_menu.add_separator()
+file_menu.add_command(label='Выход', command=window.quit)
 
 url = 'https://cataas.com/cat'
 
